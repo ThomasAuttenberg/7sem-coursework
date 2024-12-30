@@ -15,7 +15,7 @@ export const OrderRepository = {
       get<Array<Order>>(getParameterizedEndpoint(defaultUrl + "/catalog", filters))
       :
       get<Array<Order>>(defaultUrl + "/catalog"),
-  getOrder: (hash: string)=> get<Order>(defaultUrl+"/order?hash="+hash),
+  getOrder: (hash: string)=> post<Order>(defaultUrl+"/getOrder", {hash}),
   deleteOrder: ()=> del<{message: string}>(defaultUrl+"/order"),
   updateOrder: (newParams: OrderUpdateRequest)=> patch<{message: string}, OrderUpdateRequest>(defaultUrl+"/order", newParams),
   createOrder: (params: OrderCreateRequest) => post<Order,OrderCreateRequest>(defaultUrl+"/order", params),
