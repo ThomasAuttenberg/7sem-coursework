@@ -38,8 +38,8 @@ public class OrdersController {
         return ResponseEntity.ok(pagedResponse);
     }
 
-    @GetMapping("/order")
-    public ResponseEntity<?> getOrder(@ModelAttribute OrderRequest request){
+    @PostMapping("/getOrder")
+    public ResponseEntity<?> getOrder(@RequestBody OrderRequest request){
         try {
             return ResponseEntity.ok(orderService.getOrder(request));
         }catch (OrderService.OrderNotFoundException e){
